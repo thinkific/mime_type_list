@@ -3,7 +3,20 @@ require "mime_type_list/version"
 module MimeTypeList
   class VideoMimeTypes
     class << self
-      def all
+
+      def extensions_for(mime_type)
+        mime_types = MIME::Types[mime_type]
+        mime_types.map {|t| t.extensions }.flatten
+      end
+
+      def all_extensions
+        @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
+          array << extensions_for(mime_type)
+          array
+        end.flatten.sort
+      end
+
+      def all_mime_types
         %W{
           application/annodex 
           application/mp4 
