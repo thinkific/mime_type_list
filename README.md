@@ -18,12 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To build:
 
-## Contributing
+gem build mime_type_list.gemspec
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+To publish:
+
+Ensure that you bump the version if you make changes!!
+
+gem push mime_type_list-0.0.9.gem
