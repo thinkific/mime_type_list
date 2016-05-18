@@ -79,6 +79,7 @@ module MimeTypeList
           video/x-dv
           video/x-flv
           video/x-la-asf
+          video/x-m4v
           video/x-matroska
           video/x-motion-jpeg
           video/x-ms-asf
