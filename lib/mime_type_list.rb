@@ -19,7 +19,9 @@ module MimeTypeList
 
       def all_mime_types
         %W{
+          audio/aac
           audio/mpeg
+          audio/m4a
           audio/ogg
           audio/wav
         }
