@@ -21,7 +21,7 @@ module MimeTypeList
         %W{
           audio/aac
           audio/mpeg
-          audio/m4a
+          audio/mp4
           audio/ogg
           audio/wav
         }
