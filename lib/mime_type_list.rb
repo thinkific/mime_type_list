@@ -33,10 +33,15 @@ module MimeTypeList
 
       def all_mime_types
         %W{
+          application/mp4
           audio/aac
           audio/mpeg
           audio/ogg
           audio/wav
+          audio/mp4
+          audio/mp4a-es
+          audio/mpeg
+          audio/mpeg4
         }
       end
 
