@@ -6,6 +6,7 @@ module MimeTypeList
     class << self
 
       def extensions_for(mime_type)
+        byebug
         mime_types = MIME::Types[mime_type]
         mime_types.map {|t| t.extensions }.flatten
       end
