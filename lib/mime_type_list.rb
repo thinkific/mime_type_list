@@ -26,7 +26,7 @@ module MimeTypeList
       end
 
       def all_extensions
-        @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
+        extensions = @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
           array << extensions_for(mime_type)
           array
         end.flatten.uniq.sort
