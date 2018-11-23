@@ -16,7 +16,7 @@ module MimeTypeList
 
   class AudioMimeTypes < BaseMimeTypes
     class << self
-      NON_STANDARD_EXTENSIONS = ["m4a"].freeze
+      NON_STANDARD_EXTENSIONS = [".m4a"].freeze
 
       def extensions_for(mime_type)
         mime_types = MIME::Types[mime_type]
