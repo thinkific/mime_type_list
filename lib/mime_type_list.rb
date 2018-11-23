@@ -1,22 +1,16 @@
 require "mime_type_list/version"
 
 module MimeTypeList
-  class BaseMimeTypes
-    class << self
-      private
-
-        def append_non_standard_extensions(non_standard_extensions, extensions)
-          non_standard_extensions.each do |ext|
-            unless extensions.include?(ext)
-              extensions << ext
-            end
-          end
-          extensions
-        end
+  def append_non_standard_extensions(non_standard_extensions, extensions)
+    non_standard_extensions.each do |ext|
+      unless extensions.include?(ext)
+        extensions << ext
+      end
     end
+    extensions
   end
 
-  class AudioMimeTypes < BaseMimeTypes
+  class AudioMimeTypes
     class << self
       NON_STANDARD_EXTENSIONS = ["m4a"].freeze
 
@@ -45,7 +39,7 @@ module MimeTypeList
     end
   end
 
-  class VideoMimeTypes < BaseMimeTypes
+  class VideoMimeTypes
     class << self
 
       NON_STANDARD_EXTENSIONS = ["m4v"].freeze
