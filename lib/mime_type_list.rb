@@ -31,15 +31,20 @@ module MimeTypeList
           array
         end.flatten.uniq.sort
         append_non_standard_extensions(extensions)
+        pp(extensions)
       end
 
       def all_mime_types
         %W{
+          application/mp4
           audio/aac
           audio/mpeg
           audio/mp4
           audio/ogg
           audio/wav
+          audio/mp4a-es
+          audio/mpeg-2
+          audio/mpeg4
         }
       end
 
