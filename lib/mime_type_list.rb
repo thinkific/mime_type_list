@@ -1,9 +1,18 @@
 require "mime_type_list/version"
 
 module MimeTypeList
+  def append_non_standard_extensions(non_standard_extensions, extensions)
+    non_standard_extensions.each do |ext|
+      unless extensions.include?(ext)
+        extensions << ext
+      end
+    end
+    extensions
+  end
 
   class AudioMimeTypes
     class << self
+      NON_STANDARD_EXTENSIONS = ["m4a"].freeze
 
       def extensions_for(mime_type)
         mime_types = MIME::Types[mime_type]
@@ -11,17 +20,17 @@ module MimeTypeList
       end
 
       def all_extensions
-        @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
+        extensions = @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
           array << extensions_for(mime_type)
           array
         end.flatten.uniq.sort
+        append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
 
       def all_mime_types
         %W{
           audio/aac
           audio/mpeg
-          audio/m4a
           audio/ogg
           audio/wav
         }
@@ -45,7 +54,7 @@ module MimeTypeList
           array << extensions_for(mime_type)
           array
         end.flatten.uniq.sort
-        append_non_standard_extensions(extensions)
+        append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
 
       def all_mime_types
@@ -97,17 +106,6 @@ module MimeTypeList
           video/x-ms-wmx
         }
       end
-
-      private
-
-        def append_non_standard_extensions(extensions)
-          NON_STANDARD_EXTENSIONS.each do |ext|
-            unless extensions.include?(ext)
-              extensions << ext
-            end
-          end
-          extensions
-        end
     end
   end
 end
