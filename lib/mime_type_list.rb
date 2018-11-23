@@ -41,6 +41,7 @@ module MimeTypeList
           audio/mpeg
           audio/mp4
           audio/x-m4a
+        	audio/mp4a-latm
           audio/ogg
           audio/wav
         }
