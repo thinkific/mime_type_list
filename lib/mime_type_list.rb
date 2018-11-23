@@ -35,7 +35,6 @@ module MimeTypeList
         %W{
           audio/aac
           audio/mpeg
-          audio/mp4
           audio/ogg
           audio/wav
         }
@@ -44,7 +43,7 @@ module MimeTypeList
     end
   end
 
-  class VideoMimeTypes < BaseMimeTypes 
+  class VideoMimeTypes < BaseMimeTypes
     class << self
 
       NON_STANDARD_EXTENSIONS = ["m4v"].freeze
