@@ -39,9 +39,7 @@ module MimeTypeList
           application/mp4
           audio/aac
           audio/mpeg
-          audio/mp4
-          audio/x-m4a
-        	audio/mp4a-latm
+          video/mp4
           audio/ogg
           audio/wav
         }
