@@ -2,18 +2,16 @@ require "mime_type_list/version"
 
 module MimeTypeList
   class BaseMimeTypes
-    class << self
-      private
+    private
 
-        def append_non_standard_extensions(extensions)
-          NON_STANDARD_EXTENSIONS.each do |ext|
-            unless extensions.include?(ext)
-              extensions << ext
-            end
+      def append_non_standard_extensions(extensions)
+        NON_STANDARD_EXTENSIONS.each do |ext|
+          unless extensions.include?(ext)
+            extensions << ext
           end
-          extensions
         end
-    end
+        extensions
+      end
   end
 
   class AudioMimeTypes < BaseMimeTypes
