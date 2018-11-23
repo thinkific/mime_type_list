@@ -5,8 +5,8 @@ module MimeTypeList
     class << self
       private
 
-        def append_non_standard_extensions(extensions)
-          NON_STANDARD_EXTENSIONS.each do |ext|
+        def append_non_standard_extensions(non_standard_extensions, extensions)
+          non_standard_extensions.each do |ext|
             unless extensions.include?(ext)
               extensions << ext
             end
@@ -30,7 +30,7 @@ module MimeTypeList
           array << extensions_for(mime_type)
           array
         end.flatten.uniq.sort
-        append_non_standard_extensions(extensions)
+        append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
 
       def all_mime_types
@@ -60,7 +60,7 @@ module MimeTypeList
           array << extensions_for(mime_type)
           array
         end.flatten.uniq.sort
-        append_non_standard_extensions(extensions)
+        append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
 
       def all_mime_types
