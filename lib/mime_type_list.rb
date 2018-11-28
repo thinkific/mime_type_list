@@ -3,9 +3,10 @@ require "mime_type_list/version"
 module MimeTypeList
   class BaseType
     class << self
-    def append_non_standard_extensions(non_standard_extensions, extensions)
-      extensions_to_add = non_standard_extensions.select { |ext| !extensions.include?(ext) }
-      extensions.concat(extensions_to_add)
+      def append_non_standard_extensions(non_standard_extensions, extensions)
+        extensions_to_add = non_standard_extensions.select { |ext| !extensions.include?(ext) }
+        extensions.concat(extensions_to_add)
+      end
     end
   end
 
