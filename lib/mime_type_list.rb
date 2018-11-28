@@ -2,12 +2,8 @@ require "mime_type_list/version"
 
 module MimeTypeList
   def append_non_standard_extensions(non_standard_extensions, extensions)
-    non_standard_extensions.each do |ext|
-      unless extensions.include?(ext)
-        extensions << ext
-      end
-    end
-    extensions
+    extensions_to_add = non_standard_extensions.select { |ext| !extensions.include?(ext) }
+    extensions.concat(extensions_to_add)
   end
 
   class AudioMimeTypes
@@ -20,9 +16,8 @@ module MimeTypeList
       end
 
       def all_extensions
-        extensions = @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
-          array << extensions_for(mime_type)
-          array
+        extensions = @all_extensions ||= all_mime_types.map do |mime_type|
+          extensions_for(mime_type)
         end.flatten.uniq.sort
         append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
@@ -50,9 +45,8 @@ module MimeTypeList
       end
 
       def all_extensions
-        extensions = @all_extensions ||= all_mime_types.inject([]) do |array, mime_type|
-          array << extensions_for(mime_type)
-          array
+        extensions = @all_extensions ||= all_mime_types.map do |mime_type|
+          extensions_for(mime_type)
         end.flatten.uniq.sort
         append_non_standard_extensions(NON_STANDARD_EXTENSIONS, extensions)
       end
